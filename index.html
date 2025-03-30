@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Profile portfolio for Geoffrey Nehemiah Otieno, a beginner in tech">
+    <title>Geoffrey Nehemiah Otieno - Tech Portfolio</title>
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        /* Navigation Bar */
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        /* Main Layout with Grid */
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header Section */
+        header {
+            background-color: #3498db;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+        }
+        
+        /* Sections */
+        section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Skills Section with Flexbox */
+        #skills ol {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        /* Portfolio Section */
+        #portfolio {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        #portfolio img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        /* Contacts Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        /* Form Layout with Grid */
+        #regForm {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        input, select, textarea {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Multimedia Section */
+        #multimedia {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        video, audio {
+            width: 100%;
+            border-radius: 4px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        footer a {
+            color: #3498db;
+        }
+        
+        /* Media Queries for Responsiveness */
+        @media (min-width: 600px) {
+            /* Tablet Styles */
+            #regForm {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            #regForm .form-group:last-child {
+                grid-column: span 2;
+            }
+            
+            #multimedia {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (min-width: 900px) {
+            /* Desktop Styles */
+            .main-container {
+                grid-template-columns: 1fr 2fr;
+            }
+            
+            header {
+                grid-column: span 2;
+            }
+            
+            #portfolio {
+                grid-column: span 2;
+            }
+            
+            #multimedia {
+                grid-column: span 2;
+            }
+            
+            footer {
+                grid-column: span 2;
+            }
+            
+            /* Navigation adjustments */
+            .nav-container {
+                padding: 1rem 2rem;
+            }
+        }
+        
+        @media (max-width: 599px) {
+            /* Mobile Styles */
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">GNO Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contacts">Contacts</a></li>
+                <li><a href="#registration">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="main-container">
+        <!-- Header section -->
+        <header>
+            <h1>Geoffrey Nehemiah Otieno</h1>
+            <p>Beginner in Tech | Aspiring Developer</p>
+            <p>Email: <a href="mailto:otigef@yahoo.com">otigef@yahoo.com</a></p>
+        </header>
+
+        <!-- Skills section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <ol type="I">
+                <li>HTML5 and CSS3</li>
+                <li>JavaScript Fundamentals</li>
+                <li>Responsive Web Design</li>
+                <li>Basic Python Programming</li>
+                <li>Version Control with Git</li>
+            </ol>
+        </section>
+
+        <!-- Portfolio section -->
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+            <figure>
+                <img src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg" 
+                     alt="Coding workspace with computer">
+                <figcaption>My coding workspace inspiration (Image from Pexels)</figcaption>
+            </figure>
+        </section>
+
+        <!-- Contacts section -->
+        <section id="contacts">
+            <h2>My Contacts</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Geoffrey Nehemiah Otieno</td>
+                        <td>123 Tech Street, Nairobi</td>
+                        <td>+254 700 123456</td>
+                        <td>otigef@yahoo.com</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Doe</td>
+                        <td>456 Developer Ave, Mombasa</td>
+                        <td>+254 722 987654</td>
+                        <td>jane.doe@example.com</td>
+                    </tr>
+                    <tr>
+                        <td>John Smith</td>
+                        <td>789 Programmer Lane, Kisumu</td>
+                        <td>+254 733 456789</td>
+                        <td>john.smith@example.com</td>
+                    </tr>
+                    <tr>
+                        <td>Mary Johnson</td>
+                        <td>101 Coding Road, Nakuru</td>
+                        <td>+254 711 234567</td>
+                        <td>mary.j@example.com</td>
+                    </tr>
+                    <tr>
+                        <td>David Wilson</td>
+                        <td>202 Algorithm Blvd, Eldoret</td>
+                        <td>+254 744 345678</td>
+                        <td>david.w@example.com</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Registration form section -->
+        <section id="registration">
+            <h2>Registration Form</h2>
+            <form id="regForm" novalidate>
+                <!-- Personal Information -->
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required minlength="3">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required 
+                           minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
+                           title="Must contain at least one uppercase, one lowercase, and one number">
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" max="2005-12-31">
+                </div>
+
+                <!-- Dropdown for country selection -->
+                <div class="form-group">
+                    <label for="country">Country:</label>
+                    <select id="country" name="country" required>
+                        <option value="" disabled selected>Select your country</option>
+                        <option value="kenya">Kenya</option>
+                        <option value="uganda">Uganda</option>
+                        <option value="tanzania">Tanzania</option>
+                        <option value="rwanda">Rwanda</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Radio buttons for gender -->
+                <div class="form-group">
+                    <label>Gender:</label>
+                    <div>
+                        <input type="radio" id="male" name="gender" value="male" required>
+                        <label for="male">Male</label>
+                        
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+                        
+                        <input type="radio" id="other" name="gender" value="other">
+                        <label for="other">Other</label>
+                    </div>
+                </div>
+
+                <!-- Checkboxes for interests -->
+                <div class="form-group">
+                    <label>Interests (Select all that apply):</label>
+                    <div>
+                        <input type="checkbox" id="web-dev" name="interests" value="web-dev">
+                        <label for="web-dev">Web Development</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="mobile-dev" name="interests" value="mobile-dev">
+                        <label for="mobile-dev">Mobile Development</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="data-science" name="interests" value="data-science">
+                        <label for="data-science">Data Science</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ai" name="interests" value="ai">
+                        <label for="ai">Artificial Intelligence</label>
+                    </div>
+                </div>
+
+                <!-- Textarea for comments -->
+                <div class="form-group">
+                    <label for="comments">Additional Comments:</label>
+                    <textarea id="comments" name="comments" rows="4" placeholder="Any additional information..."></textarea>
+                </div>
+
+                <!-- Submit button -->
+                <div class="form-group">
+                    <button type="submit">Register</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Multimedia section -->
+        <section id="multimedia">
+            <h2>Multimedia Elements</h2>
+            
+            <div>
+                <h3>Video Introduction</h3>
+                <video controls>
+                    <source src="intro.mp4" type="video/mp4">
+                    <source src="intro.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <div>
+                <h3>Audio Message</h3>
+                <audio controls>
+                    <source src="welcome.mp3" type="audio/mpeg">
+                    <source src="welcome.ogg" type="audio/ogg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </section>
+
+        <!-- Footer section -->
+        <footer>
+            <p>&copy; 2023 Geoffrey Nehemiah Otieno. All rights reserved.</p>
+            <p>Contact: <a href="mailto:otigef@yahoo.com">otigef@yahoo.com</a></p>
+        </footer>
+    </div>
+</body>
+</html>
